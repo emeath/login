@@ -15,9 +15,36 @@ const bancoDeDados = [
   },
 ];
 
+let global_flag_info_login = 0;
+
 
 
 formulario.addEventListener("submit", logarNoSistema);
+
+function insereInfoLoginNaTela(mensagem) {
+  
+  if(global_flag_info_login == 0) {
+    const formulario = document.querySelector("[data-js='form']");
+  
+    let newDiv = document.createElement("div");
+  
+    newDiv.setAttribute("id", "user_login");
+  
+    let newH3 = document.createElement("h3");
+  
+    const newContent = document.createTextNode(mensagem);
+  
+    newH3.appendChild(newContent);
+  
+    newDiv.appendChild(newH3);
+  
+    formulario.appendChild(newDiv)
+
+    global_flag_info_login = 1;
+  }
+
+}
+
 
 function logarNoSistema(event) {
   
@@ -35,12 +62,17 @@ function logarNoSistema(event) {
 
     if (resultado_senha == true) {
       console.log("LOGIN REALIZADO COM SUCESSO! Bem vindo, " + usuario_formulario + "!");
+      
+      // Simulate an HTTP redirect:
+      window.location.replace("home.html");
     } else {
       console.log("Usuario ou senha incorretos! Tente novamente");
+      insereInfoLoginNaTela("Usuario ou senha incorretos! Tente novamente")
     }
 
   } else {
     console.log("Usuario ou senha incorretos! Tente novamente");
+    insereInfoLoginNaTela("Usuario ou senha incorretos! Tente novamente")
   }
 }
 
