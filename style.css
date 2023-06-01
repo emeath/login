@@ -5,13 +5,21 @@
 }
 
 body {
-  background: linear-gradient(yellow, green);
+  background: linear-gradient(blue, white);
   display: flex;
   justify-content: center;
   height: 100vh;
 }
 
-.form {
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.form,
+.homepage {
   max-width: 600px;
   width: 100%;
   display: flex;
@@ -19,6 +27,10 @@ body {
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+}
+
+.form button {
+  padding: 4px 10px;
 }
 
 .nome,
